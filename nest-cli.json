@@ -1,0 +1,19 @@
+{
+  "language": "ts",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "src",
+  "compilerOptions": {
+    "plugins": [
+      "@nestjs/swagger/plugin"
+    ],
+    "assets": [
+      {
+        "include": [
+          "i18n/**/*",
+          "shared/templates/**/*"
+        ],
+        "watchAssets": true
+      }
+    ]
+  }
+}

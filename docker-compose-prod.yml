@@ -1,0 +1,25 @@
+version: "3"
+services:
+  app:
+    env_file:
+      - .env
+    container_name: awesome_nest_boilerplate
+    build: .
+    ports:
+      - "$PORT:$PORT"
+    links:
+      - botv2-db
+  botv2-db:
+    image: postgres
+    container_name: botv2-db
+    environment:
+      POSTGRES_PASSWORD: postgres
+      TZ: 'GMT'
+      PGTZ: 'GMT'
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+      - ./init-data.sh:/docker-entrypoint-initdb.d/init-data.sh
+    env_file:
+      - .env
